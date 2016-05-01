@@ -2,20 +2,26 @@ package timer;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.SimpleTimeZone;
+
+import userInterface.HomeScreen;
 
 
 public class Timer {
 	static boolean TimerRunning = false;
-	static SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+	static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+	
 	static Date start = new Date();
-	static Date stop = new Date();
+	static Date stop = start;
 	public Timer(){
 		
 	}
 	public static String getTime(){
-		Date now = new Date();
+		sdf.setTimeZone(new SimpleTimeZone(SimpleTimeZone.UTC_TIME, "UTC"));
+		
 		String curTime = "";
 		if(TimerRunning == true){
+			Date now = new Date();
 			curTime = sdf.format(new Date(now.getTime() - start.getTime()));	
 		}
 		else{
@@ -26,12 +32,28 @@ public class Timer {
 	}
 	
 	public static void startTimer(){
-		start = new Date();
-		TimerRunning = true;
+		if (TimerRunning){
+			return;
+		}
+		else{
+			start = new Date();
+			TimerRunning = true;
+		}
+		
 	}
 	public static void stopTimer(){
-		stop = new Date();
-		TimerRunning = false;
+		if(TimerRunning){
+			stop = new Date();
+			TimerRunning = false;
+			HomeScreen.btnStop.setText("Reset");
+		}
+		else{
+			start = new Date();
+			stop = start;
+			HomeScreen.btnStop.setText("Stop");
+			
+		}
+		
 	}
 
 }
