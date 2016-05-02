@@ -10,5 +10,8 @@ public class HomeScreenActions {
     public static void stop() {
     	Timer.stopTimer();
 	}
+    public static void recordTime(){
+    	RecordUI.main(null);
+    }
 
 }

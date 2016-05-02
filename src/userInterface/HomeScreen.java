@@ -27,13 +27,16 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "serial" })
 public class HomeScreen extends JFrame {
 
 	public JPanel contentPane;
 	public static JLabel clock = new JLabel("Hello");
 	public static JButton btnStop = new JButton("Stop");
+	public static JButton btnStart = new JButton("Stop");
 	private JTable table;
 
 	/**
@@ -83,11 +86,12 @@ public class HomeScreen extends JFrame {
 		clock.setFont(new Font("Times New Roman", Font.PLAIN, 46));
 		clock.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnStart = new JButton("Start");
+		btnStart = new JButton("Start");
 		btnStart.setBounds(272, 9, 109, 43);
 		panel.add(btnStart);
 		
 		btnStop = new JButton("Stop");
+		btnStop.setEnabled(false);
 		btnStop.setBounds(272, 63, 109, 43);
 		panel.add(btnStop);
 		contentPane.add(panel);
@@ -164,6 +168,21 @@ public class HomeScreen extends JFrame {
 		
 		JMenuItem mntmResults = new JMenuItem("Results");
 		mnMode.add(mntmResults);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(563, 114, 349, 454);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Record Time (SPACE)");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton.setBounds(10, 31, 329, 66);
+		panel_1.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				HomeScreenActions.recordTime();
+			}
+		});
 		btnStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HomeScreenActions.stop();

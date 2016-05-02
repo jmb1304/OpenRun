@@ -38,6 +38,8 @@ public class Timer {
 		else{
 			start = new Date();
 			TimerRunning = true;
+			HomeScreen.btnStop.setEnabled(true);
+			HomeScreen.btnStart.setEnabled(false);
 		}
 		
 	}
@@ -51,6 +53,9 @@ public class Timer {
 			start = new Date();
 			stop = start;
 			HomeScreen.btnStop.setText("Stop");
+			HomeScreen.btnStop.setEnabled(false);
+			HomeScreen.btnStart.setEnabled(true);
+			
 			
 		}
 		
