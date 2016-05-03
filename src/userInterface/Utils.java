@@ -3,9 +3,16 @@ package userInterface;
 import javax.swing.JOptionPane;
 
 public class Utils {
-	public static void infoBox(String infoMessage, String titleBar)
+	private static String titleBar;
+	public static void infoBox(String infoMessage, String title)
     {
-        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+		if (title == "" | title == null){
+			titleBar = "OpenRun";
+		}
+		else{
+			titleBar = title;
+		}
+        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

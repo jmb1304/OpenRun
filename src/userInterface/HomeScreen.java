@@ -9,10 +9,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.FontFormatException;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -27,6 +30,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -38,6 +42,7 @@ public class HomeScreen extends JFrame {
 	public static JButton btnStop = new JButton("Stop");
 	public static JButton btnStart = new JButton("Stop");
 	private JTable table;
+	private static Font lcdFont = new Font(null);
 
 	/**
 	 * Launch the application.
@@ -53,6 +58,7 @@ public class HomeScreen extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -81,9 +87,9 @@ public class HomeScreen extends JFrame {
 		lblTheWorldIs.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		clock = new JLabel("00:00:00.00");
-		clock.setBounds(10, 81, 272, 86);
+		clock.setBounds(10, 93, 272, 86);
 		panel.add(clock);
-		clock.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		clock.setFont(new Font("LCD", Font.PLAIN, 49));
 		clock.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		btnStart = new JButton("Start");
@@ -170,6 +176,8 @@ public class HomeScreen extends JFrame {
 		mnMode.add(mntmResults);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), new BevelBorder(BevelBorder.LOWERED, null, null, null, null)));
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBounds(563, 114, 349, 454);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);

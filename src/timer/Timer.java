@@ -60,5 +60,8 @@ public class Timer {
 		}
 		
 	}
+	public static boolean getTimerRunning(){
+		return TimerRunning;
+	}
 
 }

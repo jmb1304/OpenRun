@@ -11,7 +11,13 @@ public class HomeScreenActions {
     	Timer.stopTimer();
 	}
     public static void recordTime(){
-    	RecordUI.main(null);
+    	if (timer.Timer.getTimerRunning()){
+    		RecordUI.main(null);
+    	}
+    	else{
+    		Utils.infoBox("The timer is not running! Cannot record time.", "Alert");
+    	}
+    	
     }
 
 }

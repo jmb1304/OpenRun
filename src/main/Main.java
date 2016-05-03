@@ -9,6 +9,7 @@ public class Main {
 		HomeScreen.main(args);
 		UpdateTimer timerThread = new UpdateTimer();
 		timerThread.start();
+		
 
 	}
 
